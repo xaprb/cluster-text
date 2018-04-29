@@ -80,15 +80,15 @@ func main() {
 		sort.Slice(topWords, func(i, j int) bool {
 			return clust.wordCount[topWords[i]] > clust.wordCount[topWords[j]]
 		})
-		for i := 0; i < 15; i++ {
+		for i := 0; i < 10; i++ {
 			fmt.Printf("    %s\t%.2f\n", topWords[i], clust.wordCount[topWords[i]])
 		}
-		fmt.Println("    Documents:")
-		limit := 20
+	}
+
+	for i := range results {
 		for _, doc := range docs {
-			if limit > 0 && doc.clusterId == i {
-				limit--
-				fmt.Printf("    %s\n", doc.path)
+			if doc.clusterId == i {
+				fmt.Printf("%d,%s\n", i, doc.path)
 			}
 		}
 	}
